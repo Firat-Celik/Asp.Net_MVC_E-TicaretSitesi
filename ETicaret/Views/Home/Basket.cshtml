@@ -1,0 +1,217 @@
+﻿@model List<ETicaret.Web.ViewModel.Home.BasketModels>
+@{
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+    List<ETicaret.Web.ViewModel.Home.BasketModels> basket = (List<ETicaret.Web.ViewModel.Home.BasketModels>)Session["Basket"];
+}
+
+
+<head>
+
+    <link rel="stylesheet" href="~/Content/Template/css/font-awesome.min.css">
+</head>
+
+
+
+
+@using (Html.BeginForm("Buy", "Home"))
+{
+    <div class="wishlist-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 ">
+                    <small style="color:red;">@TempData["MyError"]</small>
+                    <div class="continue-link">
+                        <a href="/Anasayfa">Alışverişe Devam Et</a>
+                    </div>
+                    <div class="cart-wrapper table-responsive">
+                        <table class="shop_table cart ">
+
+                            <thead>
+                                <tr>
+                                    <th colspan="3" class="product-name">Ürün</th>
+                                    <th class="product-price">Fiyatı</th>
+                                    <th class="product-quantity">Adeti</th>
+                                    <th class="product-subtotal">Toplam</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @if (basket == null || basket.Count <= 0)
+                                {
+                                    <tr>
+                                        <td class="remove-product">
+                                            &nbsp;&nbsp;
+                                            <a href="#" class="btn btn-info btn-xs">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </a>&nbsp;
+                                            <a href="#" class="btn btn-danger btn-xs">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </a>
+
+                                        </td>
+                                        <td class="product-thumbnail">
+                                            <span class="amount">&nbsp; &nbsp;&nbsp;&nbsp; - &nbsp; &nbsp;&nbsp;&nbsp;</span>
+                                        </td>
+                                        <td class="text-capitalize">
+
+                                            <a href="#">Henüz Bir Ürün Seçmediniz</a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span class="amount">&nbsp; &nbsp;&nbsp;&nbsp; - &nbsp; &nbsp;&nbsp;&nbsp;</span>
+                                        </td>
+                                        <td class="product-quantity">
+
+                                            <div class="quantity">
+                                                <span class="input-text qty ">&nbsp; &nbsp;&nbsp;&nbsp; - &nbsp; &nbsp;&nbsp;&nbsp;</span> &nbsp; &nbsp;&nbsp;&nbsp;
+                                                <a href="#" class="btn btn-warning btn-xs">
+                                                    <span class="glyphicon glyphicon-plus"></span>
+
+                                                </a>&nbsp;
+                                                <a href="#" class="btn btn-info btn-xs">
+                                                    <span class="glyphicon glyphicon-minus"></span>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td class="product-subtotal">
+                                            <span class="amount">&nbsp; &nbsp;&nbsp;&nbsp; - &nbsp; &nbsp;&nbsp;&nbsp;</span>
+                                        </td>
+
+                                    </tr>
+                                }
+                                else
+                                {
+
+
+
+                                    foreach (ETicaret.Web.ViewModel.Home.BasketModels item in Model)
+                                    {
+                                        <tr class="cart_item">
+                                            <td class="remove-product">
+                                                &nbsp;&nbsp;
+                                                <a href="~/UrunDetay/@item.Product.Id" class="btn btn-info btn-xs">
+                                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                                </a>&nbsp;
+                                                <a href="~/SepetSil/@item.Product.Id" class="btn btn-danger btn-xs">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+
+                                            </td>
+                                            <td class="product-thumbnail">
+                                                <a href="#"><img width="114" height="130" alt="04" class="attachment-shop_thumbnail wp-post-image" src="~/Content/Template/img/fv-products/1.jpg"></a>
+                                            </td>
+                                            <td class="product-name">
+
+                                                <a href="/UrunDetay/@item.Product.Id">@item.Product.Name</a>
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="amount">@item.Product.Price</span>
+                                            </td>
+                                            <td class="product-quantity">
+
+                                                <div class="quantity">
+                                                    <span class="input-text qty ">  @item.Count</span> &nbsp; &nbsp;&nbsp;&nbsp;
+                                                    <a href="~/SepetEkle/@item.Product.Id" class="btn btn-warning btn-xs">
+                                                        <span class="glyphicon glyphicon-plus"></span>
+
+                                                    </a>&nbsp;
+                                                    <a href="~/SepetEkle/@item.Product.Id?remove=true" class="btn btn-info btn-xs">
+                                                        <span class="glyphicon glyphicon-minus"></span>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                            <td class="product-subtotal">
+                                                <span class="amount">@(item.Product.Price * item.Count)</span>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                }
+
+                            </tbody>
+                            @if (Session["LogonUser"] != null)
+                            {
+                                <tfoot>
+                                    @if (ViewBag.CurrentAddresses.Count >= 1 && ((List<SelectListItem>)ViewBag.CurrentAddresses).Count >= 1)
+                                    {
+                                        <tr>
+                                            <td colspan="2">
+                                                @Html.Label("AddressId", "Adres Seçiniz")
+                                            </td>
+                                            <td colspan="4">
+                                                @Html.DropDownList("Address", (List<SelectListItem>)ViewBag.CurrentAddresses, new { @class = "form-control" })
+
+                                            </td>
+                                        </tr>
+                                    }
+                                    @if (ViewBag.CurrentAddresses.Count <= 0 && ((List<SelectListItem>)ViewBag.CurrentAddresses).Count <= 0)
+                                    {
+
+
+                                        <tr>
+                                            <td colspan="2">
+                                                @Html.Label("AddressId", "Adres Seçiniz")
+                                            </td>
+                                            <td colspan="4">
+
+                                                <span class="text-danger " style="text-shadow:10px"> Tanımlı Adresiniz Bulunmamaktadır!&nbsp; </span><span class="text-dark"> Lütfen Adresinizi Tanımlamak için &nbsp;&nbsp;<a class="btn btn-success" href="/Profil">&nbsp;Tıklayın&nbsp;</a></span><br /><br />
+                                                <span class="alert-danger text-uppercase" style="color:black;font-family:Tahoma,sans-serif;font-size:large">Adres Bilginiz Olmadan Ürünü Siparişlerinize Ekleyemezsiniz</span>
+
+
+                                            </td>
+                                        </tr>
+                                    }
+                                </tfoot>
+
+                            }
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 ">
+                            <div class="coupon">
+                                <h3 class="widget-title">Kupon</h3>
+                                <input type="text" placeholder="Kupon Kodunuz" value="" id="coupon_code" name="coupon_code">
+                                <input type="submit" value="Kuponu  Ekle" name="apply_coupon" class="button small">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 ">
+                            <div class="cart_totals">
+                                <h2>Sepet Toplam Ücreti</h2>
+                                <div class="total_table">
+                                    <table class="table-responsive">
+                                        <tbody>
+                                            <tr class="cart-subtotal">
+                                                <th>Ürün Toplam Ücreti</th>
+                                                <td><span class="amount">@ViewBag.TotalPrice</span></td>
+                                            </tr>
+                                            <tr class="shipping">
+                                                <th>Ekstra İndirim</th>
+                                                <td>Ektra İndirim Bulunmamaktadır</td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <th>Toplam Ücret</th>
+                                                <td><strong><span class="amount">@ViewBag.TotalPrice</span></strong> </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="submit_crt">
+                                        <a href="/SepetSil/0">
+                                            <span class="btn btn-secondary btn-lg" style="color:white; background-color:coral">
+                                                Sepeti Boşalt
+                                            </span>
+                                        </a>
+
+                                        <button type="submit" class="btn btn-success btn-lg">
+                                            <span class="glyphicon glyphicon-send"></span> Ödeme Listeme Ekle
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

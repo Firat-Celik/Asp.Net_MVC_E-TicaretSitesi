@@ -1,0 +1,44 @@
+﻿@using ETicaret.Web.DB
+@model List<Products>
+
+
+
+<!-- Featured Products start -->
+<di"v class="featured-product-area">
+    <h3 class="left-p-title"><span>Yeni Ürünler</span></h3>
+    
+
+    @foreach (var item in Model)
+    {
+
+        <div class="sp-single">
+            <div class="sp-img-area">
+                <img class="first-img" src="~/Content/Template/img/all-sp/2.jpg" alt="" />
+                <div class="quick-view-detail">
+                    <a href="/UrunDetay/@item.Id">Detay Görüntüle</a>
+                </div>
+                <div class="sp-label-pro sp-label-pro-hot">Yeni</div>
+            </div>
+            <div class="sp-info-area">
+                <h2 class="product-name"><a href="/UrunDetay/@item.Id">@item.Name</a></h2>
+                <div class="product-rating">
+                    <div class="ratingbox" title=" Rating: 3/5">
+                        <div style="width:65px" class="stars-orange"></div>
+                    </div>
+                </div>
+                <p class="all-prices">
+                    <span class="sp-price main-price">@item.Price</span>
+                </p>
+                <div class="sp-button">
+                    <div class="s-button">
+                        <a href="/SepetEkle/@item.Id" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                    </div>
+
+                    <div class="s-button last-b ">
+                        <a href="/UrunDetay/@item.Id" data-toggle="tooltip" data-placement="top" title="Detay Görüntüle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>}
+   

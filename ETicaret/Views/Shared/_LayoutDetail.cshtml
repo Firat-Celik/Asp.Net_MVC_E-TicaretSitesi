@@ -1,0 +1,146 @@
+﻿
+@{
+    ETicaret.Web.DB.Members logonUser = (ETicaret.Web.DB.Members)Session["LogonUser"];
+}
+
+
+
+
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-Ticaret Demo | Fırat ÇELİK</title>
+    <meta name="description" content="E-Ticaret">
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/shopping-cart-icon-19.png">
+    <!--All Fonts  Here -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- ALL CSS FILES HERE -->
+    <!-- Bootstrap CSS -->
+
+    <link rel="stylesheet" href="~/Content/Template/css/bootstrap.min.css">
+    <!-- font-awesome CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/font-awesome.min.css">
+    <!-- fancybox CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/fancybox/jquery.fancybox.css">
+    <!--bxslider CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/jquery.bxslider.min.css">
+
+    <link rel="stylesheet" href="~/Content/Template/css/owl.carousel.css">
+
+    <link rel="stylesheet" href="~/Content/Template/css/owl.transitions.css">
+
+    <link rel="stylesheet" href="~/Content/Template/css/owl.theme.css">
+    <!-- rs-plugin CSS -->
+    <!-- slider revolution css settings -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Template/lib/rs-plugin/css/settings.css" media="screen" />
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/animate.css">
+    <!-- jquery-ui-->
+    <link rel="stylesheet" href="~/Content/Template/css/jquery-ui.css">
+    <!-- css for mobile menu-->
+    <link rel="stylesheet" href="~/Content/Template/css/mobile_menu.min.css">
+    <!-- normalize CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/normalize.css">
+    <!-- main CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/main.css">
+    <!-- style CSS -->
+    <link href="~/Content/Template/style.css" rel="stylesheet" />
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/Content/Templatecss/home-2-color.css">
+    <!-- responsive CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/responsive.css">
+
+    <!-- modernizr js -->
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+
+    <div id="loader-wrapper">
+        <div class="logo"></div>
+        <div id="loader">
+        </div>
+    </div>
+    @Html.Action("_Header", "Home")
+    <div class="main-menu-area ">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-10 col-sm-8 col-md-3 col-lg-3">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    @Html.Action("_SearchDetail", "Home")
+    <br />  <br />
+    @RenderBody()
+
+    <br /><br /><br />
+
+    <br /><br />
+    @Html.Action("_Footer", "Home")
+    <group>
+
+
+        <script src="~/Content/Template/js/vendor/jquery-1.11.3.min.js"></script>
+        <!-- price_slider js -->
+        <script src="~/Content/Template/js/price_slider.js"></script>
+        <!-- bootstrap js -->
+        <script src="~/Content/Template/js/bootstrap.min.js"></script>
+        <!-- owl.carousel.min js -->
+        <script src="~/Content/Template/js/owl.carousel.min.js"></script>
+        <!-- slicknav js -->
+        <script src="~/Content/Template/js/jquery.mobilemenu.js"></script>
+        <!-- parallax js -->
+        <script src="~/Content/Template/js/parallax.js"></script>
+        <!-- treeview js -->
+        <script src="~/Content/Template/js/jquery.treeview.js"></script>
+        <!-- jquery mixitup js -->
+        <script src="~/Content/Template/js/jquery.mixitup.min.js"></script>
+        <!-- jquery.scrollUp js -->
+        <script src="~/Content/Template/js/jquery.scrollUp.min.js"></script>
+        <!-- jquerye levatezoom js -->
+        <script src="~/Content/Template/js/jquery.elevatezoom.js"></script>
+        <!-- jquerye countdown js -->
+        <script src="~/Content/Template/js/countdown.js"></script>
+        <!-- jquery fancybox js -->
+        <script src="~/Content/Template/js/jquery.fancybox.pack.js"></script>
+        <!-- jquery bx-slider js -->
+        <script src="~/Content/Template/js/bx-slider.min.js"></script>
+        <!-- jquery.easing js -->
+        <script src="~/Content/Template/js/jquery.easing.1.3.min.js"></script>
+        <!--RS Lib js -->
+        <script type="text/javascript" src="~/Content/Template/lib/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="~/Content/Template/lib/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="~/Content/Template/js/rs-slider.js"></script>
+        <!-- jquery.appear js -->
+        <script src="~/Content/Template/js/jquery.appear.js"></script>
+        <!-- wow js -->
+        <script src="~/Content/Template/js/wow.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+        <!-- plugins js -->
+        <script src="~/Content/Template/js/plugins.js"></script>
+        <!-- main js -->
+        <script src="~/Content/Template/js/main.js"></script>
+        <script src="~/Content/Template/js/vendor/modernizr-2.8.3.min.js"></script>
+    </group>
+</body>
+</html>

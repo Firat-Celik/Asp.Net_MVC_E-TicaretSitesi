@@ -1,0 +1,223 @@
+﻿
+@using ETicaret.Web.ViewModel
+@model CatProduct
+
+@{
+    ViewBag.Title = "CatProduct";
+    Layout = "~/Views/Shared/_Layout_ProductList.cshtml";
+    List<ETicaret.Web.DB.Categories> categories = new List<ETicaret.Web.DB.Categories>();
+    if (Model.Category != null)
+    {
+        categories.Add(Model.Category);
+        var parentcat = Model.Category.Categories2;
+        while (parentcat != null)
+        {
+            categories.Add(parentcat);
+            parentcat = parentcat.Categories2;
+        }
+    }
+}
+
+
+<div class="row" style="margin-left:5px">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="/Anasayfa">Ana Sayfa</a></li>
+            @for (int i = categories.Count - 1; i >= 0; i--)
+            {
+                if (i == 0)
+                {
+                    <li class="active">@categories[i].Name</li>
+                }
+                else
+                {
+                    <li><a href="/Kategori/@categories[i].Id">@categories[i].Name</a></li>
+                }
+
+            }
+
+        </ol>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="home-2-new-product ">
+
+    <div class="container">
+
+
+
+        <div class="row">
+            <div class="col-sm-3 col-md-3 col-lg-3">
+
+                <div class="all-shop-cat">
+                    <form action="single-product.html#">
+                        <div class="single-shop-cat">
+                            <h3>Ürün Grupları </h3>
+                            <ul>
+                                <li><a href="#"> Temizle</a></li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Elektronik</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Moda &amp; Giyim</a>
+                                    <span>(10)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">PC &amp; Laptop</a>
+                                    <span>(40)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Ev Dekorasyon &amp; Aksesuar</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Kitap</a>
+                                    <span>(9)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Sağlık &amp; Yaşam</a>
+                                    <span>(12)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Kozmetik</a>
+                                    <span>(11)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Spor</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Mobil &amp; Tablet</a>
+                                    <span>(16)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Saat &amp; Gözlük</a>
+                                    <span>(19)</span>
+                                </li>
+
+                            </ul>
+                            <h3 class="manufacturers">Filtrele</h3>
+                            <ul>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Apple</a>
+                                    <span>(19)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Canon</a>
+                                    <span>(10)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Nokia</a>
+                                    <span>(40)</span>
+                                </li>
+                                <li>
+                                    <div class="chack-boutton"> <input type="checkbox"> </div>
+                                    <a href="#">Samsung</a>
+                                    <span>(19)</span>
+                                </li>
+                            </ul>
+                            <h3 class="manufacturers">Ücret</h3>
+                            <div class="price_filter">
+                                <div id="slider-range"></div>
+                                <div class="price_slider_amount">
+                                    <p><input type="text" id="amount" name="price" placeholder="Ücreti Giriniz" /></p>
+                                    <input type="submit" value="Sorgula" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="add-r-sidebar">
+                        <p class="banner-block"><a href="#"><img alt="" src="  ~/Content/Template/img/all-adds/3.jpg"></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="all-new-p">
+
+                <div>
+
+                    @foreach (var item in Model.ProductList)
+                    {
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+
+                            <div class="sp-single">
+
+
+                                <div class="sp-img-area">
+
+
+
+                                    <img class="first-img" src="~/Content/Template/img/all-sp/new-p/1.jpg" alt="" />
+
+                                    <div class="quick-view-detail">
+                                        <a href="/UrunDetay/@item.Id">Detayını Görüntüle</a>
+                                    </div>
+
+                                </div>
+                                <div class="sp-info-area">
+                                    <h2 class="product-name"><a title="Dolor Dignissim Semper" href="/UrunDetay/@item.Id">@item.Name</a></h2>
+                                    <div class="product-rating">
+                                        <div class="ratingbox" title=" Rating: 3/5">
+                                            <div style="width:50px" class="stars-orange"></div>
+                                        </div>
+                                    </div>
+                                    <p class="all-prices">
+                                        <span class="sp-price main-price">@item.Price</span>
+                                    </p>
+                                    <div class="sp-button">
+                                        <div class="s-button">
+                                            <a href="/SepetEkle/@item.Id" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                        </div>
+                                        <div class="s-button last-b ">
+                                            <a href="/UrunDetay/@item.Id" data-toggle="tooltip" data-placement="top" title="Detayını Görüntüle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@model List<ETicaret.Web.DB.Categories>
+
+  
+<div class="menu-cat-area">
+    <span class="nk-module-title" style="font-family:Tahoma,sans-serif; font-size:28px">KATEGORİLER</span>
+    <div class="nk-all-items">
+        <div class="sp-module-content">
+            <!-- treeview -->
+            <div class="vina-treeview-virtuemart" id="vina-treeview-virtuemart93">
+
+                <ul class="level0 treeview">
+                    @foreach (var cat in Model)
+                    {
+                        if (cat.Categories1.Any())
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle"  href="/Kategori/@cat.Id">@cat.Name</a>
+                                @_MenuHelper.MenuRecursive(cat.Categories1.ToList())
+                            </li>
+                        }
+                        else
+                        {
+                            <li><a href="/Kategori/@cat.Id">@cat.Name</a></li>
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+

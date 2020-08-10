@@ -1,0 +1,151 @@
+﻿
+@{
+   ETicaret.Web.DB.Members logonUser = (ETicaret.Web.DB.Members)Session["LogonUser"];
+}
+
+
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-Ticaret Demo | Fırat ÇELİK</title>
+    <meta name="description" content="E-Ticaret">
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/shopping-cart-icon-19.png">
+    <!--All Fonts  Here -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Bitter:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- ALL CSS FILES HERE -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/bootstrap.min.css">
+    <!-- font-awesome CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/font-awesome.min.css">
+    <!-- fancybox CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/fancybox/jquery.fancybox.css">
+    <!--bxslider CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/jquery.bxslider.min.css">
+    <!-- owl.carousel CSS-->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/owl.carousel.css">
+    <!-- owl.carousel transitions CSS-->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/owl.transitions.css">
+    <!-- owl.theme CSS-->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/owl.theme.css">
+    <!-- rs-plugin CSS -->
+    <!-- slider revolution css settings -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Template/Index/lib/rs-plugin/css/settings.css" media="screen" />
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/animate.css">
+    <!-- jquery-ui-->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/jquery-ui.css">
+    <!-- css for mobile menu-->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/mobile_menu.min.css">
+    <!-- normalize CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/normalize.css">
+    <!-- main CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/main.css">
+    <!-- style CSS -->
+    <link href="~/Content/Template/Index/style.css" rel="stylesheet" />
+    <!-- style CSS -->
+    <link rel="stylesheet" href="~/Content/Template/css/home-2-color.css">
+    <!-- responsive CSS -->
+    <link rel="stylesheet" href="~/Content/Template/Index/css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+   
+
+
+    <!-- modernizr js -->
+
+</head>
+<body class="home-2">
+    <div id="loader-wrapper">
+        <div class="logo"></div>
+        <div id="loader">
+        </div>
+    </div>
+
+    @Html.Action("_Header", "Home")
+    <div class="main-menu-area ">
+        <div class="container">
+
+        </div>
+    </div>
+
+    @Html.Action("_Search", "Home")
+    @RenderBody()
+    <br /><br />
+    @Html.Action("_Footer", "Home")
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+    <script>
+        window.cookieconsent.initialise({
+            "palette": {
+                "popup": {
+                    "background": "#006bdeb8"
+                },
+                "button": {
+                    "background": "#f4f4f4d1",
+                    "text": "#237afc"
+                }
+            },
+            "position": "bottom-right",
+            "content": {
+                "message": "Sitemizden en iyi şekilde faydalanabilmeniz için çerezler kullanılmaktadır. Bu siteye giriş yaparak çerez kullanımını kabul etmiş sayılıyorsunuz.",
+                "dismiss": "Anladım",
+                "link": "Bilgi için"
+            }
+        });
+    </script>
+    <group>
+
+        <script src="~/Content/Template/Index/js/vendor/jquery-1.11.3.min.js"></script>
+        <script src="~/Content/Template/Index/js/bootstrap.min.js"></script>
+        <!-- price_slider js -->
+        <script src="~/Content/Template/Index/js/price_slider.js"></script>
+        <!-- bootstrap js -->
+        <!-- owl.carousel.min js -->
+        <script src="~/Content/Template/Index/js/owl.carousel.min.js"></script>
+        <!-- slicknav js -->
+        <script src="~/Content/Template/Index/js/jquery.mobilemenu.js"></script>
+        <!-- parallax js -->
+        <script src="~/Content/Template/Index/js/parallax.js"></script>
+        <!-- treeview js -->
+        <script src="~/Content/Template/Index/js/jquery.treeview.js"></script>
+        <!-- jquery mixitup js -->
+        <script src="~/Content/Template/Index/js/jquery.mixitup.min.js"></script>
+        <!-- jquery.scrollUp js -->
+        <script src="~/Content/Template/Index/js/jquery.scrollUp.min.js"></script>
+        <!-- jquerye levatezoom js -->
+        <script src="~/Content/Template/Index/js/jquery.elevatezoom.js"></script>
+        <!-- jquerye countdown js -->
+        <script src="~/Content/Template/Index/js/countdown.js"></script>
+        <!-- jquery fancybox js -->
+        <script src="~/Content/Template/Index/js/jquery.fancybox.pack.js"></script>
+        <!-- jquery bx-slider js -->
+        <script src="~/Content/Template/Index/js/bx-slider.min.js"></script>
+        <!-- jquery.easing js -->
+        <script src="~/Content/Template/Index/js/jquery.easing.1.3.min.js"></script>
+        <!--RS Lib js -->
+        <script type="text/javascript" src="~/Content/Template/Index/lib/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+        <script type="text/javascript" src="~/Content/Template/Index/lib/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+        <script type="text/javascript" src="~/Content/Template/Index/js/rs-slider.js"></script>
+        <!-- jquery.appear js -->
+        <script src="~/Content/Template/Index/js/jquery.appear.js"></script>
+        <!-- wow js -->
+        <script src="~/Content/Template/Index/js/wow.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+        <!-- plugins js -->
+        <script src="~/Content/Template/Index/js/plugins.js"></script>
+        <!-- main js -->
+        <script src="~/Content/Template/Index/js/main.js"></script>
+        <script src="~/Content/Template/Index/js/vendor/modernizr-2.8.3.min.js"></script>
+    </group>
+</body>
+
+</html>

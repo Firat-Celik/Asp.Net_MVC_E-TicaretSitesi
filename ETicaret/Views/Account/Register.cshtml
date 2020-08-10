@@ -1,0 +1,150 @@
+﻿@model ETicaret.Web.Models.ViewModel.RegisterModels
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+
+<style>
+
+    .colorgraph {
+        height: 5px;
+        border-top: 0;
+        background: #c4e17f;
+        border-radius: 5px;
+        background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+        background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+        background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+        background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    }
+</style>
+
+
+
+<script>
+
+    $(function () {
+        $('.button-checkbox').each(function () {
+
+            // Settings
+            var $widget = $(this),
+                $button = $widget.find('button'),
+                $checkbox = $widget.find('input:checkbox'),
+                color = $button.data('color'),
+                settings = {
+                    on: {
+                        icon: 'glyphicon glyphicon-check'
+                    },
+                    off: {
+                        icon: 'glyphicon glyphicon-unchecked'
+                    }
+                };
+
+            // Event Handlers
+            $button.on('click', function () {
+                $checkbox.prop('checked', !$checkbox.is(':checked'));
+                $checkbox.triggerHandler('change');
+                updateDisplay();
+            });
+            $checkbox.on('change', function () {
+                updateDisplay();
+            });
+
+            // Actions
+            function updateDisplay() {
+                var isChecked = $checkbox.is(':checked');
+
+                // Set the button's state
+                $button.data('state', (isChecked) ? "on" : "off");
+
+                // Set the button's icon
+                $button.find('.state-icon')
+                    .removeClass()
+                    .addClass('state-icon ' + settings[$button.data('state')].icon);
+
+                // Update the button's color
+                if (isChecked) {
+                    $button
+                        .removeClass('btn-default')
+                        .addClass('btn-' + color + ' active');
+                }
+                else {
+                    $button
+                        .removeClass('btn-' + color + ' active')
+                        .addClass('btn-default');
+                }
+            }
+
+            // Initialization
+            function init() {
+
+                updateDisplay();
+
+                // Inject the icon if applicable
+                if ($button.find('.state-icon').length == 0) {
+                    $button.prepend('<i class="state-icon ' + settings[$button.data('state')].icon + '"></i>');
+                }
+            }
+            init();
+        });
+    });
+
+
+</script>
+
+
+
+
+@using (Html.BeginForm())
+
+{
+    <div class="container">
+        <br /><br />
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <form role="form">
+                    <h2>Yeni Hesap oluştur </h2>
+                    @if (ViewBag.ReError != null && string.IsNullOrEmpty((string)ViewBag.ReError) == false)
+                    {
+                        <small style="color:red;">@ViewBag.ReError</small>
+                    }
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Member.Name, new { @class = "form-control", placeholder = "İsim", type = "text" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Member.Surname, new { @class = "form-control", placeholder = "Soyisim", type = "text" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBoxFor(model => model.Member.Email, new { @class = "form-control", placeholder = "E-mail Adresiniz", type = "email" })
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.Member.Password, new { @class = "form-control", placeholder = "Şifreniz", type = "password" })
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-6">
+                            <div class="form-group">
+                                @Html.TextBoxFor(model => model.rePassword, new { @class = "form-control", placeholder = "Şifre-Tekrar", type = "password" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr class="colorgraph">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6"><input type="submit" value="Kayıt Ol" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                        <div class="col-xs-12 col-md-6"><a href="/Giris" class="btn btn-success btn-block btn-lg">Giriş Yap</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+}

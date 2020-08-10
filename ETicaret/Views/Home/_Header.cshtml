@@ -1,0 +1,152 @@
+﻿
+@{
+    ETicaret.Web.DB.Members logonUser = (ETicaret.Web.DB.Members)Session["LogonUser"];
+}
+
+
+
+
+
+<div class="header-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-lg-4" >
+                <div class="logo-area img-responsive">
+                    <a href="/Anasayfa"><img src="~/Content/img/unnamed.png" width="120" height="120" alt="logo" class="img-responsive" /> </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7 col-lg-7">
+                <div class="top-nav-area">
+                    <ul>
+                        @{
+                            List<ETicaret.Web.ViewModel.Home.BasketModels> basket = (List<ETicaret.Web.ViewModel.Home.BasketModels>)Session["Basket"];
+
+                        }
+                        @if (basket == null)
+                        {
+                            basket = new List
+                            <ETicaret.Web.ViewModel.Home.BasketModels>
+                                ();
+
+                            <li>
+                                <a href="/Sepetim">
+                                    <div class="cart_area">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <div class="nav-select">
+                                            <div class="text_menu">
+                                                Sepetim
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="cart-sub">
+                                    <div class="all-cart">
+                                        <p> Henüz Bir Ürün Seçilmedi.</p>
+
+                                    </div>
+                                    <h3><span>Toplam Tutar &nbsp; &nbsp; <span>@ViewBag.TotalPrice</span></span></h3>
+                                    <div class="sub-button">
+                                        <a href="/Sepetim">Sepete Git</a>
+                                    </div>
+                                </div>
+                            </li>
+
+                        }
+                        else
+                        {
+
+
+                            <li>
+
+
+
+                                <a href="/Sepetim">
+                                    <div class="cart_area">
+                                        <i class="fa fa-shopping-cart"></i>
+                                        <div class="nav-select">
+                                            <div class="text_menu">
+                                                Sepetim
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="cart-sub">
+                                    @foreach (ETicaret.Web.ViewModel.Home.BasketModels item in basket)
+                                    {
+                                        <div class="all-cart">
+
+                                            <p>@item.Count Adet <a href="index-2.html#">@item.Product.Name</a> <span>@(item.Product.Price * item.Count)</span> </p>
+
+                                        </div>}
+                                    <h3><span>Toplam Tutar &nbsp; &nbsp; <span>@ViewBag.TotalPrice</span></span></h3>
+                                    <div class="sub-button">
+                                        <a href="/Sepetim">Sepete Git</a>
+                                    </div>
+                                </div>
+
+                            </li>
+                        }
+                        @if (logonUser == null)
+                        {
+                            <li>
+                                <a href=/Uyelik>
+                                    <i class="fa fa-sign-in"></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            Üye Ol
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/Giris">
+                                    <i class="fa fa-key "></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            Giriş
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                        @if (logonUser != null)
+                        {
+                            <li>
+                                <a href="/Profil">
+                                    <i class="fa fa-user"></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            Profil
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/Siparis">
+                                    <i class="fa fa-money"></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            Siparişlerim
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Account")">
+                                    <i class="fa fa-sign-out"></i>
+                                    <div class="nav-select">
+                                        <div class="text_menu">
+                                            Çıkış
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

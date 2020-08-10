@@ -1,0 +1,84 @@
+﻿
+@model ETicaret.Web.Models.i.IndexModel
+
+
+
+
+
+<div class="home-1-slider-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 ">
+                <div class="h1-slider">
+                    @Html.Action("_Slider")
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="home-2-main-area">
+    <div class="container">
+        <div class="row">
+            <div class=" col-sm-12 col-md-3 col-lg-3">
+                <div class="h2-cat">
+                    @Html.Partial("_MenuTopCategory", (List<ETicaret.Web.DB.Categories>)ViewBag.MenuCategories)
+                </div>
+                @Html.Action("_LeftSlide")
+                @Html.Action("_SpecialProduct")
+
+                @Html.Action("_MostPopular")
+
+            </div>
+            <div class=" col-sm-12 col-md-9 col-lg-9">
+                @Html.Action("_Banner")
+                @Html.Action("_NewProduct")
+                @Html.Action("_Electronic")
+                @Html.Action("_Toys")
+                @Html.Action("_Cosmetic")
+                @Html.Action("_Fashion")
+                <br /><br /><br /><br />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="productinfo" tabindex="-1" role="dialog" aria-labelledby="productinfo-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="productinfo-label">Ürün Bilgisi</h4>
+            </div>
+            <div class="modal-body">
+                <p id="modalBodyP"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                <a href="~/Home/AddBasket/Id" id="modelBasketHref" class="btn btn-success">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>&nbsp;Sepete At
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function GetProductInfo(Id) {
+        $("#productinfo").modal("show");
+        $.ajax({
+            url: "/Home/GetProductDes/" + Id,
+            method: "GET",
+            async: true,
+            success: function (data) {
+                $("#modalBodyP").text(data);
+                var newHref = $("#modelBasketHref").attr("href");
+                newHref = newHref.replace("/Id", "/" + Id);
+                $("#modelBasketHref").attr("href", newHref);
+            },
+            error: function (err) {
+                console.log("GetProductDes error", err);
+                $("#productinfo").modal("hide");
+            }
+        });
+    }
+</script>

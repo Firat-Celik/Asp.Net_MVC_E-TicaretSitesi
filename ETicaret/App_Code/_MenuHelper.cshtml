@@ -1,0 +1,31 @@
+﻿
+
+
+
+
+
+@helper MenuRecursive(List<ETicaret.Web.DB.Categories> cats)
+{
+    <ul class="sub-menu treeview">
+
+        @foreach (var cat in cats)
+        {
+            if (cat.Categories1.Any())
+            {
+                <li class="expandable">
+                    <a href="~/Kategori/@cat.Id"><span class="catTitle ">@cat.Name</span></a>
+                    @MenuRecursive(cat.Categories1.ToList())
+                </li>
+            }
+            else
+            {
+                <li><a href="~/Kategori/@cat.Id">@cat.Name</a></li>
+            }
+        }
+    </ul>
+}
+
+
+
+
+

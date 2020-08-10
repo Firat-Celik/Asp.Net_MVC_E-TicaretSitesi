@@ -1,0 +1,66 @@
+﻿
+
+
+@using ETicaret.Web.DB
+@model  List<Products>
+
+
+
+<div class="home-2-new-product tablet">
+    <div class="all-p-title">
+        <h3>Elektronik Ürünleri</h3>
+    </div>
+    <div class="row">
+        <div class="all-new-p">
+            <div class="h2-new-single singal-p">
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="sp-single">
+
+                            <div class="sp-img-area">
+
+                           
+
+                                <img class="first-img" src="~/Content/Template/img/featured-bg2.jpg" alt="" />
+
+                                <div class="quick-view-detail">
+                                    <a href="/UrunDetay/@item.Id">Detayını Görüntüle</a>
+                                </div>
+
+                            </div>
+                            <div class="sp-info-area">
+                                <h2 class="product-name"><a title="Dolor Dignissim Semper" href="/UrunDetay/@item.Id">@item.Name</a></h2>
+                                <div class="product-rating">
+                                    <div class="ratingbox" title=" Rating: 3/5">
+                                        <div style="width:50px" class="stars-orange"></div>
+                                    </div>
+                                </div>
+                                <p class="all-prices">
+                                    <span class="sp-price main-price">@item.Price</span>
+                                </p>
+                                <div class="sp-button">
+                                    <div class="s-button">
+                                        <a href="/SepetEkle/@item.Id" data-toggle="tooltip" data-placement="top" title="Sepete Ekle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-shopping-cart"></i> </a>
+                                    </div>
+                                    <div class="s-button last-b ">
+                                        <a href="/UrunDetay/@item.Id" data-toggle="tooltip" data-placement="top" title="Detayını Görüntüle" class="black-tooltip add-to-cart all_src_icon"> <i class="fa fa-eye"></i> </a>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="banner-home-inner ">
+        <a href="index-2.html#">
+            <img alt="" src="~/Content/Template/img/all-bannars/4.jpg">
+        </a>
+    </div>
+</div>

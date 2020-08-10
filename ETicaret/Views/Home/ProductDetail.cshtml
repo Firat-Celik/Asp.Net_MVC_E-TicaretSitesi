@@ -1,0 +1,466 @@
+﻿@using ETicaret.Web.ViewModel
+@model CatProduct
+@{
+    ViewBag.Title = "ProductDetail";
+
+    Layout = "~/Views/Shared/_LayoutDetail.cshtml";
+}
+
+
+
+
+
+
+
+
+<!-- Single product area start  -->
+<div class="shop-wrapper">
+    <div class="container">
+        <div class="row">
+          
+            <div class="col-sm-9 col-md-9 col-lg-9">
+                
+                <div class="clear"></div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-5 col-lg-5">
+                        <div class="product-view">
+                            <div class="full-product-img">
+                                <div class="tab-content">
+                                    <div  id="home" class="tab-pane fade in active">
+                                        <img class="zoom_01" src='~/Content/Template/img/all-sp/1.jpg' data-zoom-image="~/Content/Template/img/all-sp/1.jpg" alt="" />
+                                    </div>
+                                   
+
+                                    <div  id="menu1" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/Content/Template/img/all-sp/4.jpg' data-zoom-image="~/Content/Template/img/all-sp/4.jpg" alt="" />
+                                    </div>
+                                    <div  id="menu2" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/Content/Template/img/all-sp/5.jpg' data-zoom-image="~/Content/Template/img/all-sp/5.jpg" alt="" />
+                                    </div>
+                                    <div  id="menu3" class="tab-pane fade">
+                                        <img class="zoom_01" src='~/Content/Template/img/all-sp/6.jpg' data-zoom-image="~/Content/Template/img/all-sp/6.jpg" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="small-products">
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="single-product.html#home">
+                                            <img src="~/Content/Template/img/all-sp/1.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="single-product.html#menu1">
+                                            <img src="~/Content/Template/img/all-sp/4.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="single-product.html#menu2">
+                                            <img src="~/Content/Template/img/all-sp/5.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="single-product.html#menu3">
+                                            <img src="~/Content/Template/img/all-sp/6.jpg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-7 col-lg-7">
+                        <div class="single-product-info sp-info-area">
+                            <div class="product-name"><h1>@Model.Product.Name</h1></div>
+                            <div class="form-group">
+                                <span class="text-danger">Derecelendirme :&nbsp;&nbsp;&nbsp;</span>
+                                <span class="text-warning">
+                                    @for (int i = 0; i < Model.Product.StarPoint; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star"></span>
+                                    }
+                                    @for (int i = 0; i < 5 - Model.Product.StarPoint; i++)
+                                    {
+                                        <span class="glyphicon glyphicon-star-empty"></span>
+                                    }
+                                </span>
+                            </div>
+
+                            <div class="all-prices">
+                                <span class="sp-price price-lessprice">250.00 TL</span>
+                                <span class="sp-price main-price">@Model.Product.Price TL</span>
+                                <p class="sku">Stok: <span class="color">@Model.Product.UnitsInStock</span></p>
+                            </div><br />
+                           
+                            <div class="product-short-description">
+                             @Html.Raw( @Model.Product.ShortText)
+                            </div>
+                            <div class="single-icons">
+                                <ul>                                    
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Ürünü Karşılaştır" class="black-tooltip" href="#"><i class="fa fa-refresh"></i></a></li>
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Yazdır" class="black-tooltip" href="#"><i class="fa fa-print"></i></a></li>
+                                    <li><a data-toggle="tooltip" data-placement="top" title="Email" class="black-tooltip" href="#"><i class="fa fa-envelope-o"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="s-product-fields">
+                                <div class="s-product-fields-l">
+                                    <span><strong>Rengi</strong></span>
+                                    <div class="select-wrapper">
+                                        <select class="select-nksearch">
+                                            <option selected="selected">Mavi </option>
+                                            <option>Sarı +10 TL</option>
+                                            <option>Kırmızı +7.50 TL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="s-product-fields-l s-product-fields-r">
+                                    <span><strong>Ebatı</strong></span>
+                                    <div class="select-wrapper">
+                                        <select class="select-nksearch">
+                                            <option selected="selected">M </option>
+                                            <option>L +12.50 TL</option>
+                                            <option>XL +14.35 TL</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-quantity">
+                                <div class="numbers-row">
+                                    <input type="text" value="1" name="#">
+                                </div>
+                                <div class="s-poraduct-botton">
+                                    <a href="/SepetEkle/@Model.Product.Id">
+                                        <span class="btn btn-secondary btn-lg" style="color:white; background-color:coral">
+                                            Sepete Ekle
+                                        </span>
+                                    </a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="reviews-areas">
+                            <div class="reviw-title">
+                                <ul class="nav nav-tabs">
+                                    <li class="active"><a data-toggle="tab" href="single-product.html#description">Ürün Açıklaması</a></li>
+                                    <li><a data-toggle="tab" href="single-product.html#review">Ürün Yorumları</a></li>
+                                    <li><a data-toggle="tab" href="single-product.html#infomation">Teknik Detaylar</a></li>
+                                </ul>
+                            </div>
+                            <div class="revew-content-area">
+                                <div class="tab-content">
+                                    <div  id="description" class="tab-pane fade in active">
+                                        <large class="text-lg-center" >Örnek Ürün Açıklaması</large> <br /><br />
+                                        <span class="body-content text-capitalize"> 
+                                        
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et orci velit. Nulla porta rutrum libero, at cursus justo. Ut egestas imperdiet arcu sit amet condimentum. Mauris quis scelerisque orci. In mauris justo, tempor luctus feugiat vel, rutrum ac tellus. Praesent quis risus quam. Aliquam vulputate elit sed accumsan congue. Nulla suscipit tempor purus sit amet tincidunt. Aliquam elementum facilisis euismod. Morbi rutrum eros non diam accumsan, vitae sollicitudin quam dapibus. Curabitur vestibulum justo vel condimentum finibus. Pellentesque sit amet lorem at arcu dictum commodo blandit non augue. Aliquam ut libero et massa facilisis fringilla. Donec vel iaculis urna.
+
+                                        Vivamus aliquet posuere quam quis vehicula. Pellentesque accumsan, quam sed rhoncus vestibulum, tortor dui rhoncus quam, nec venenatis magna tortor ut felis. In id nulla sed felis finibus tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer id mi leo. Curabitur nisi est, feugiat a lectus a, cursus blandit elit. Phasellus sed dolor ultrices elit pulvinar dictum. Sed ullamcorper sed dui vel lobortis.
+
+                                        Nam nulla ligula, semper non imperdiet in, vehicula ut felis. Quisque mollis libero ac mi pellentesque malesuada. Nullam nec felis suscipit, eleifend est a, vestibulum quam. Mauris bibendum, leo eget porttitor lacinia, lectus neque luctus augue, sodales vestibulum metus lorem non leo. Aliquam pellentesque sapien in ultrices malesuada. Aliquam finibus, metus non scelerisque accumsan, dolor felis porta diam, a consequat libero neque sit amet augue. Integer at lectus at augue feugiat porta. Phasellus aliquam purus ut lacus iaculis, eu tempus ipsum lacinia. Donec congue convallis enim, ut imperdiet justo mollis sit amet. Curabitur consectetur dolor in velit ultrices, nec mattis leo malesuada. Mauris luctus aliquam nunc eu porta. Nullam luctus tincidunt nibh. Cras finibus sed metus at pellentesque. Nunc at augue a justo egestas varius. Aliquam fermentum vulputate ipsum, eget dictum elit facilisis vitae.</span> 
+                                    </div>
+                                    <div  id="review" class="tab-pane fade">
+                                        <div class="customer-reviews">
+                                            <h3 class="title-list-reviews">Yorumlar</h3>
+                                            <div class="list-reviews">
+                                                <div class="review-item normal">
+                                                    <b class="author">Ali Yılmaz</b>
+                                                    <span class="vote">
+                                                        <span style="display:inline-block;width:70px;" class="vmicon ratingbox" title="Rating: 4/5">
+                                                            <span style="width:56px" class="stars-orange"></span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="date">Çarşamba, 15 Tem 2019</span>
+                                                    <p class="info">Kullanışlı bir ürün</p>
+                                                </div>
+                                                <div class="clear"></div>
+                                                <div class="review-item normal">
+                                                    <b class="author">Ece Köksal</b>
+                                                    <span class="vote">
+                                                        <span style="display:inline-block;width:70px;" class="vmicon ratingbox" title="Rating: 3/5">
+                                                            <span style="width:56px" class="stars-orange"></span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="date">Cuma, 2 Şub 2020</span>
+                                                    <p class="info">Ürün zamanında elime ulaştı teşekkürler.</p>
+                                                </div>
+                                                <div class="clear"></div>
+                                                <div class="review-item normal">
+                                                    <b class="author">Onur Şans</b>
+                                                    <span class="vote">
+                                                        <span style="display:inline-block;width:70px;" class="vmicon ratingbox" title="Rating: 5/5">
+                                                            <span style="width:56px" class="stars-orange"></span>
+                                                        </span>
+                                                    </span>
+                                                    <span class="date">Salı, 14 Şub 2020</span>
+                                                    <p class="info">Güzel bir ürün tavsiye ederim.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div  id="infomation" class="tab-pane fade">
+                                        <div class="product-infomation">
+                                            <ul class="list-info">
+                                                <li><strong>Ağırlığı</strong> 10.00 KG</li>
+                                                <li><strong>Uzunluk</strong> 10.00 M</li>
+                                                <li><strong>Genişlik</strong> 5.00 M</li>
+                                                <li><strong>Yükseklik</strong> 5.00 M</li>
+                                              
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rp-area">
+                            <div class="all-p-title">
+                                <h3>Benzer Ürünler</h3>
+                            </div>
+                            <div class="singl-shop ">
+                                <div class="row">
+                                    <!-- SP-SINGLE Product -->
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/19.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/2">Detayları Görüntüle</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-hot">Yeni</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/UrunDetay/2" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">289.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/2" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/11.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/3">Detayları Görüntüle</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-hot">Yeni</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/SepetEkle/3" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">89.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/3" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/3" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/13.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/4">Detayları Görüntüle</a>
+                                                </div>
+                                                 
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/UrunDetay/4" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 2/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">28.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/4" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/4" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/18.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/">Detayları Görüntüle</a>
+                                                </div>
+                                                 
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/UrunDetay/5" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 4/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">125.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/5" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/5" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/20.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/6">Detayları Görüntüle</a>
+                                                </div>
+                                                 
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/UrunDetay/6" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">589.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/6" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/6" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/25.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/7">Detayları Görüntüle</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-hot">Yeni</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/UrunDetay/7" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">59.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/7" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/7" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3 col-lg-3">
+                                        <div class="sp-single">
+                                            <div class="sp-img-area">
+                                                <img alt="" src="  ~/Content/Template/img/all-sp/new-p/5.jpg" class="first-img">
+
+                                                <div class="quick-view-detail">
+                                                    <a href="/UrunDetay/8">Detayları Görüntüle</a>
+                                                </div>
+                                                <div class="sp-label-pro sp-label-pro-hot">Yeni</div>
+                                            </div>
+                                            <div class="sp-info-area">
+                                                <h4 class="product-name"><a href="/UrunDetay/8" title="Benzer Ürün Başlığı"> </a>Benzer Ürün Başlığı</h4>
+                                                <div class="product-rating">
+                                                    <div title=" Rating: 3/5" class="ratingbox">
+                                                        <div class="stars-orange" style="width:50px"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="all-prices">
+                                                    <span class="sp-price main-price">79.00 TL</span>
+                                                </p>
+                                                <div class="sp-button">
+                                                    <div class="s-button">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Sepete Ekle" data-placement="top" data-toggle="tooltip" href="/SepetEkle/8" data-original-title="add to cart"> <i class="fa fa-shopping-cart"></i> </a>
+                                                    </div>
+
+                                                    <div class="s-button last-b ">
+                                                        <a class="black-tooltip add-to-cart all_src_icon" title="Detayını Görüntüle" data-placement="top" data-toggle="tooltip" href="/UrunDetay/8" data-original-title="view detail"> <i class="fa fa-eye"></i> </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                  
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Single product area End  -->

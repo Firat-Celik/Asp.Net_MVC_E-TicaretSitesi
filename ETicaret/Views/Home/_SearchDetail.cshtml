@@ -1,0 +1,71 @@
+﻿@model List<ETicaret.Web.DB.Categories>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sen&display=swap" rel="stylesheet">
+<style>
+    .nk-all-items {
+        display: none;
+    }
+
+    .nk-module-title {
+        background: #333333;
+        padding: 16px 44px 13px 13px;
+        border-radius: 4px;
+        margin-top: 65px
+    }
+</style>
+
+<div class="nk-search-area">
+    <div class="container">
+        <div class="row">
+
+
+
+            <div class="menu-cat-area">
+                <div style="margin-top:6px">
+                    <span class="nk-module-title" style="font-family: Tahoma,'sans-serif';
+        font-size: 28px">KATEGORİLER <i class="material-icons">keyboard_arrow_down</i></span>
+                    <div class="nk-all-items">
+                        <div class="sp-module-content">
+                            <!-- treeview -->
+                            <div class="vina-treeview-virtuemart" id="vina-treeview-virtuemart93">
+
+                                <ul class="level0 treeview">
+                                    @foreach (var cat in Model)
+                                    {
+                                        if (cat.Categories1.Any())
+                                        {
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="/Kategori/@cat.Id">@cat.Name</a>
+                                                @_MenuHelper.MenuRecursive(cat.Categories1.ToList())
+                                            </li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="/Kategori/@cat.Id">@cat.Name</a></li>
+                                        }
+
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-xs-10 col-sm-10 col-md-7 col-lg-7" style="margin-left:290px">
+                <div class="nk-search ">
+                    <div class="search_input">
+                        <input type="text" placeholder="Ne Aramıştınız?" />
+                        <div class="search-button-wrapper">
+                            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

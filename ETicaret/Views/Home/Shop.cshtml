@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_Layout_Detail.cshtml";
+}
+
+
+
+
+
+<div class="shop-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3">
+                <div class="shop-by">
+                    <h3>Ürün Listele</h3>
+                </div>
+                <div class="all-shop-cat">
+                  @Html.Action("_ShopFilter")
+                    <div class="add-r-sidebar">
+                        <p class="banner-block"><a href="shop.html#"><img alt="" src="~/Content/Template/img/all-adds/3.jpg"></a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-9 col-lg-9">
+                @Html.Action("_ShopProduct")
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,51 @@
+﻿
+@{
+    ETicaret.Web.DB.Members logonUser = (ETicaret.Web.DB.Members)Session["LogonUser"];
+}
+
+
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-Ticaret Demo | Fırat ÇELİK</title>
+    <meta name="description" content="E-Ticaret">
+    <!-- Mobile specific metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Content/img/shopping-cart-icon-19.png">
+    <link href="~/Conten/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Template/Index/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+    <link href="~/Conten/site.css" rel="stylesheet" />
+    <script src="~/Script/jquery-1.9.1.min.js"></script>
+    <script src="~/Script/bootstrap.min.js"></script>
+    <link href="~/Content/Template/style2.css" rel="stylesheet" />
+
+</head>
+
+<body class="home-2">
+    <div id="loader-wrapper">
+        <div class="logo"></div>
+        <div id="loader">
+        </div>
+    </div>
+
+    @Html.Action("_Header", "Home")
+    <div class="main-menu-area ">
+        <div class="container">
+
+        </div>
+    </div>
+
+    @Html.Action("_Search", "Home")
+    @RenderBody()
+    <br /><br />
+    @Html.Action("_Footer", "Home")
+
+
+</body>
+
+</html>
